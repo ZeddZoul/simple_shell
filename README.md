@@ -1,66 +1,59 @@
-# C - BUILD YOUR OWN SHELL
-## Introduction: :ledger:
-* One of the core tenets of the ALX SE program is the belief in doing hard things and now, they have presented us with another hard thing
-* The mission of this current task is to build a shell that will work as good as any bash shell or even better
-* As usual, there are restraints and constraints on the number and type of functions we're allowed to use but the fact that we're working in teams of two means that we have more info and resources to use
+<h1> 0x16. C - Simple Shell</h1>
+<p>This is a simple UNIX command interpreter<img src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg" alt="Shell"></p>
 
-## Helper Files: :raised_hands:
-Every file is a helper file though as ALX didn't provide us with the usual _putchar function
+<h3>Compilation</h3>
 
-## Header Files: :scroll:
-* [shell.h](./shell.h)
-It contains all the header files we should have been constantly declaring to usse functions and syscalls like the write and read_
+<p>How Our Shell is compiled:</p>
 
-* [header](./headers/) :file_folder:
- <details>
-  <summary>It contains other header files that were used in declaring related function prototypes</summary>
+<pre><code>gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh </code></pre>
 
-  * [builtin.h](./headers/builtin.h) :scroll: </br>
-    Contains the header prototypes for the builtins
-  * [include.h](./headers/include.h) :scroll: </br>
-    Contains the struct for the node type and the C header files
-  * [path.h](./headers/path.h) :scroll: </br>
-    Contains the prototpyes for the functions that find the environmental path
-  * [string.h](./headers/string.h) :scroll: </br>
-    Contains prototypes for the string functions
-</details>
+<h3>Our Shell in modes:</h3>
 
-## Contents
-* ### Files which are sourcefiles for the codes :page_facing_up:
-|**FILES**|**FUNCTIONS**|**ACTIONS**|
-|:---|:---:|:---|
-|[append.c](./append.c)|_int appendStr(char ***arr, size_t *size, char *str, int index)_|Appends a string to an array of strings_|
-||int appendChar(char **string, size_t *size, char chr, int index)|Appends a  character to a string_|
-||int appendInt(char **string, size_t *size, int num, int index)|Appends an integer to a string|
-|[find.c](./find.c)|char *findenv(char *env[], const char *name)|Returns the value of a n environmental variable|
-||struct dirent *findfile(DIR *dir, const char *filename)|searches through the directory for a a file|
-||char *joinpath(const char *base, const char *child)|Joins two paths together using "/"|
-||char *findcmd(const char *command, const char *PATH)|searches throuh the $PATH variable to find a command|
-|[line.c](./line.c)|char **tokenizeLine(char *line)|Split a line into separate words|
-|[quote.c](./quote.c)|int findquote(char *str, char quote)|Finds a string in quotes within a string(unescaped quote)|
-||int parsequote(char *string, int *index, char **buffer, size_t *buf_size, int *buf_index)|Groups characters in quotes as a single word during tokenization|
-|[run.c](./run.c)|int execute(const char *program, char *args[])|Executes a programin a child process|
-|[atoi.c](./atoi.c)|bool checkatoi(char *s)|checks if a string can be turned into numbers|
-||int _atoi(char *s)|converts a string into an integer|
-** AND MANY MORE FUNCTIONS WORKING BEHIND THE SCENE
-* ### _Files with a program as a target_ :page_with_curl:
-|**FILE**|**PROGRAM FUNCTION**|
-|:---|:---:|
-|[main.c](./main.c)|It is the entry point for the shell|
+<p>in interactive mode:</p>
 
-## See Also
- <details>
-  <summary>Please click this arrow for compilation instructions</summary>
+<pre><code>$ ./hsh
 
-  * Use **_gcc *.c -o hsh_** to compile
-  * THen run **./hsh**
-  * Ignore any .swo, .swp and any other file that is not an executable, C or header file
-  * This shell has been tested and trusted. It comes with some builtins though
-</details>
+($) /bin/ls
+AUTHORS  built-ins.c  helper.c  hsh  man_simple_shell  path.c  README.md  shell.c  shell.h  str.c
 
-## AUTHORS
-**Ugwuanyi Afam** alias **Phyro Kelstein** :stuck_out_tongue_winking_eye::v:
-* To view my github, click [here](https://github.com/2022phyro)
+($)
 
-**David John** alias **Dave Mcsavvy** :sunglasses::ok_hand:
-* To view my github, click [here](https://github.com/Mcsavvy)
+($) exit
+
+$
+
+</code></pre>
+
+<p>But also in non-interactive mode:</p>
+
+<pre><code>$ echo &quot;/bin/ls&quot; | ./hsh
+
+AUTHORS  built-ins.c  helper.c  hsh  man_simple_shell  path.c  README.md  shell.c  shell.h  str.c
+
+$
+
+$ cat AUTHORS
+# This file lists all individuals who contributed to the repository
+
+Adele Wisdom <adelewisdom@gmail.com>
+$
+</code></pre>
+
+<h4>List of helpful commands</h4>
+<ul>
+<li><code>cat</code> -  prints and concatenates files to the standard output</li>
+<li><code>ls</code> - will list all files and directories in current working directory</li>
+<li><code>cp</code> - copies a file into another file</li>
+<li><code>grep</code> - helps to search for a file in a specific pattern</li>
+<li><code>less</code> - will let you go backward and forward in the files</li>
+<li><code>pwd</code> - given you the current working directory
+<li><code>mv</code> -  helps to move one file into another file
+</ul>
+
+<h4>Exiting the Shell</h4>
+<p><code>exit</code>To quit the shell the user can simple type in "exit"</p>
+
+<h3>Authors: </h3>
+<ul>
+<li>Adele Wisdom</li>
+</ul>
